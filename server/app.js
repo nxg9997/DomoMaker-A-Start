@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
@@ -54,4 +52,3 @@ app.listen(port, (err) => {
   }
   console.log(`listening on port ${port}`);
 });
->>>>>>> Stashed changes

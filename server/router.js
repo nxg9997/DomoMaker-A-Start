@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 const controllers = require('./controllers');
 
 const router = (app) => {
@@ -14,4 +12,3 @@ const router = (app) => {
 };
 
 module.exports = router;
->>>>>>> Stashed changes

@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 const models = require('../models');
 
 const Domo = models.Domo;
@@ -46,4 +44,3 @@ const makeDomo = (req, res) => {
 
 module.exports.makerPage = makerPage;
 module.exports.make = makeDomo;
->>>>>>> Stashed changes
