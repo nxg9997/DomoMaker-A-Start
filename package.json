@@ -8,12 +8,16 @@
   "description": "A Simple Login Example using Node.js, Mongo and Redis",
   "main": "./server/app.js",
   "scripts": {
-    "build": "babel ./client --out-file ./hosted/bundle.js",
-    "watch": "babel --watch ./client --out-file ./hosted/bundle.js",
+    "buildLoginBundle": "babel ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
+    "buildAppBundle": "babel ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js",
+    "build": "npm run buildLoginBundle && npm run buildAppBundle",
+    "watchLoginBundle": "babel --watch ./client/login ./client/helper --presets @babel/preset-react --out-file ./hosted/loginBundle.js",
+    "watchAppBundle": "babel --watch ./client/app ./client/helper --presets @babel/preset-react --out-file ./hosted/bundle.js",
     "nodemon": "nodemon --watch ./server ./server/app.js",
     "start": "node ./server/app.js",
     "pretest": "eslint ./server --fix",
-    "test": "echo \"Tests complete\""
+    "test": "echo \"Tests complete\"",
+    "cstart": "concurrently \"npm:nodemon\" \"npm:watchLoginBundle\" \"npm:watchAppBundle\""
   },
   "keywords": [
     "Node",
@@ -27,6 +31,7 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
+    "@babel/preset-react": "^7.9.4",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.1",
@@ -35,6 +40,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
+    "concurrently": "^5.1.0",
     "connect-redis": "^4.0.4",
     "cookie-parser": "^1.4.5",
     "csurf": "^1.11.0",
