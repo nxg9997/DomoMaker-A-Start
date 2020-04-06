@@ -7,6 +7,7 @@ let DomoModel = {};
 
 const convertId = mongoose.Types.ObjectId;
 const setName = (name) => _.escape(name).trim();
+const setFood = (food) => _.escape(food).trim();
 
 const DomoSchema = new mongoose.Schema({
   name: {
@@ -19,6 +20,11 @@ const DomoSchema = new mongoose.Schema({
     type: Number,
     min: 0,
     required: true,
+  },
+  food: {
+    type: String,
+    required: true,
+    set: setFood,
   },
   owner: {
     type: mongoose.Schema.ObjectId,
@@ -41,7 +47,7 @@ DomoSchema.statics.findByOwner = (ownerId, callback) => {
     owner: convertId(ownerId),
   };
 
-  return DomoModel.find(search).select('name age').lean().exec(callback);
+  return DomoModel.find(search).select('name age food').lean().exec(callback);
 };
 
 DomoModel = mongoose.model('Domo', DomoSchema);

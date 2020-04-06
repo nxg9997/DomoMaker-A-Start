@@ -50,7 +50,7 @@ nav:nth-child(1) {
 .domoForm {
     border: 2px solid #338acc;
     height: 35px;
-    width: 700px;
+    width: 1000px;
     margin-top:0px;
     padding-top:10px;
     background-color: #55acee;
@@ -190,7 +190,7 @@ nav:nth-child(1) {
 }
 
 #domos {
-    width: 40%;
+    width: 60%;
     min-width: 400px;
     border: 2px solid #55acee;
     border-radius: 4px;
