@@ -15,11 +15,9 @@
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-deep_purple.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <link rel="stylesheet" href="/assets/style.css">
-    <title>RMII - Project 2 - NG</title>
+    <title>RMII - P2 - Sign Up</title>
 </head>
 <body>
-    <!--section id="title"></section-->
-    <!--section id="nav"></section-->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
         <div class="mdl-layout__drawer">
             <span class="mdl-layout-title">G-Link</span>
@@ -38,30 +36,20 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-grid">
-                    <div class="mdl-cell--12-col mdl-grid">
-                        <div class="mdl-layout-spacer"></div>
-                        <h1>G-Link</h1>
-                        <div class="mdl-layout-spacer"></div>
-                    </div>
-                    <div class="mdl-cell--12-col mdl-grid">
-                        <div class="mdl-layout-spacer"></div>
-                        <h3 className="text-center">The place to link up with others to game with!</h3>
-                        <div class="mdl-layout-spacer"></div>
-                    </div>
-                    <div class="mdl-cell--12-col mdl-grid">
-                        <div class="mdl-layout-spacer"></div>
-                        <section id="signup"></section>
-                        <div class="mdl-layout-spacer"></div>
-                    </div>
-                    <div class="mdl-cell--12-col mdl-grid">
-                        <div class="mdl-layout-spacer"></div>
-                        <a href="/login"><p>Login In</p></a>
-                        <div class="mdl-layout-spacer"></div>
-                    </div>
+                    <form id="signupForm" name="signupForm" action="/signup" method="POST">
+                        <label for="username">Username: </label>
+                        <input type="text" name="username" placeholder="username" />
+                        <label for="password">Password: </label>
+                        <input type="password" name="pass" placeholder="password" />
+                        <label for="password2">Retype Password: </label>
+                        <input type="password" name="pass2" placeholder="retype password" />
+                        <input type="hidden" name="_csrf" value={{csrfToken}} />
+                        <input type="submit" value="Sign Up" />
+                    </form>
                 </div>
             </div>
         </main>
     </div>
 </body>
-<script src="/assets/bundle.js"></script>
+<script src="/assets/signupBundle.js"></script>
 </html>

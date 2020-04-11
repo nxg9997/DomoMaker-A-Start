@@ -1,25 +1,54 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <title>DomoMaker</title>
-  <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-  <script crossorigin src="https://unpkg.com/prop-types/prop-types.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
-  <link rel="shortcut icon" href="/assets/img/favicon.png"/>
-  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types/prop-types.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js"></script>
+    <link rel="shortcut icon" href="/assets/img/favicon.png"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-deep_purple.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="/assets/style.css">
+    <title>RMII - P2 - Log In</title>
 </head>
-<body> 
-  <nav><a href="/login"><img id="logo" src="/assets/img/face.png" alt="face logo"/></a>
-    <div class="navlink"><a id="loginButton" href="/login">Login</a></div>
-    <div class="navlink"><a id="signupButton" href="/signup">Sign up</a></div>
-  </nav>
-  <section id="content"></section>
-  <div id="domoMessage"><img id="speech" src="/assets/img/speech.png" alt="speech box"/>
-    <h3><span id="errorMessage">Wrong username or password</span></h3><img id="domo" src="assets/img/domo.png" alt="domo"/>
-  </div>
-  <script src="/assets/loginBundle.js"></script>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">G-Link</span>
+            <nav class="mdl-navigation">
+                {{#if navlinks}}
+                    {{#each navlinks}}
+                        <a class="mdl-navigation__link" href={{this.href}}>{{this.text}}</a>
+                    {{/each}}
+                {{/if}}
+                <!--a class="mdl-navigation__link" href="">A</a>
+                <a class="mdl-navigation__link" href="">B</a>
+                <a class="mdl-navigation__link" href="">C</a>
+                <a class="mdl-navigation__link" href="">D</a-->
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <h1>LogIn</h1>
+                    <form id="loginForm" name="loginForm" action="/login" method="POST" class="mainForm">
+                        <label for="username">Username: </label>
+                        <input id="user" type="text" name="username" placeholder="username"/>
+                        <label for="pass">Password: </label>
+                        <input id="pass" type="password" name="pass" placeholder="password"/>
+                        <input type="hidden" name="_csrf" value={{csrfToken}} />
+                        <input class="formSubmit" type="submit" value="Sign In" />
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
+<script src="/assets/loginBundle.js"></script>
 </html>

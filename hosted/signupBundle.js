@@ -1,14 +1,14 @@
 "use strict";
 
-console.log('hi from login.tsx');
-$('#loginForm').on('submit', function (e) {
+console.log('hi from signup.tsx');
+$('#signupForm').on('submit', function (e) {
   e.preventDefault();
   /*const path = $('#signupForm').attr('action');
-  sendFetch(path !== undefined?path:'/', {method:'POST',body:$("#signupForm").serialize()}
-  ,(res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
+  sendFetch(path !== undefined?path:'/', {method:'POST',body:$("#signupForm").serialize()},
+  (res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
 
-  var path = $('#loginForm').attr('action');
-  sendAjax(path !== undefined ? path : '/', $('#loginForm').serialize());
+  var path = $('#signupForm').attr('action');
+  sendAjax(path !== undefined ? path : '/', $('#signupForm').serialize());
 });
 "use strict";
 /*declare namespace JSX {
