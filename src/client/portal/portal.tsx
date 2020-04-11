@@ -14,4 +14,8 @@ $(document).ready(()=>{
     $('.friendsLi').each((index, el) => {
         ReactDOM.render(<LISTITEM name={$(el).attr('name-prop')}></LISTITEM>, el);
     });
+
+    $('.messageLi').each((index, el) => {
+        ReactDOM.render(<DETAILEDLI name={$(el).attr('name-prop')} message={$(el).attr('msg-prop')}></DETAILEDLI>, el);
+    });
 });

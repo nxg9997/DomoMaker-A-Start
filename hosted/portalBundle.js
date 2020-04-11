@@ -16,6 +16,12 @@ $(document).ready(function () {
       name: $(el).attr('name-prop')
     }), el);
   });
+  $('.messageLi').each(function (index, el) {
+    ReactDOM.render( /*#__PURE__*/React.createElement(DETAILEDLI, {
+      name: $(el).attr('name-prop'),
+      message: $(el).attr('msg-prop')
+    }), el);
+  });
 });
 "use strict";
 /*declare namespace JSX {
@@ -33,6 +39,26 @@ $(document).ready(function () {
       [elemName:string]:any;
     }
 }*/
+
+var DETAILEDLI = function DETAILEDLI(props) {
+  return (/*#__PURE__*/React.createElement("li", {
+      className: "mdl-list__item mdl-list__item--three-line"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "mdl-list__item-primary-content"
+    }, /*#__PURE__*/React.createElement("i", {
+      className: "material-icons mdl-list__item-avatar"
+    }, "person"), /*#__PURE__*/React.createElement("span", null, props.name), /*#__PURE__*/React.createElement("span", {
+      className: "mdl-list__item-text-body"
+    }, props.message)), /*#__PURE__*/React.createElement("span", {
+      className: "mdl-list__item-secondary-content"
+    }, /*#__PURE__*/React.createElement("a", {
+      className: "mdl-list__item-secondary-action",
+      href: "#"
+    }, /*#__PURE__*/React.createElement("i", {
+      className: "material-icons"
+    }, "star"))))
+  );
+};
 
 var LISTITEM = function LISTITEM(props) {
   return (/*#__PURE__*/React.createElement("li", {

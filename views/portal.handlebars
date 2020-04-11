@@ -39,10 +39,13 @@
                     <div class="mdl-cell--12-col">
                         <h1>Welcome, {{username}}</h1>
                     </div>
+                    <div class="mdl-grid mdl-cell--12-col color-red">
+                        <h2>My Games</h2>
+                    </div>
                     <div class="mdl-cell--12-col mdl-grid">
                         <div class="mdl-cell--4-col color-red small-margin">
                             <h4>Friends List</h4>
-                            <ul class="demo-list-icon mdl-list">
+                            <ul class="mdl-list">
                                 {{#if friends}}
                                     {{#each friends}}
                                         <section class="friendsLi" name-prop={{this.name}}></section>
@@ -59,8 +62,26 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="mdl-cell--6-col color-red height-100 small-margin">
-
+                        <div class="mdl-cell--6-col color-red small-margin">
+                            <h4>Messages</h4>
+                            <ul class="mdl-list">
+                                {{#if messages}}
+                                    {{#each messages}}
+                                        <li class="mdl-list__item mdl-list__item--three-line">
+                                            <span class="mdl-list__item-primary-content">
+                                                <i class="material-icons mdl-list__item-avatar">person</i>
+                                                <span>{{this.name}}</span>
+                                                <span class="mdl-list__item-text-body">
+                                                    {{this.message}}
+                                                </span>
+                                            </span>
+                                            <span class="mdl-list__item-secondary-content">
+                                                <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">error</i></a>
+                                            </span>
+                                        </li>
+                                    {{/each}}
+                                {{/if}}
+                            </ul>
                         </div>
                     </div>
                 </div>
