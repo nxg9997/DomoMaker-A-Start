@@ -13,6 +13,8 @@ const router = (app) => {
   // app.post('/maker', mid.requiresLogin, controllers.Domo.make);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Home.homePage);
 
+  app.post('/addFriend', mid.requiresSecure, mid.requiresLogin, controllers.Account.addFriend);
+
   // app.post('/domodel', mid.requiresSecure, controllers.Domo.domoDel);
 };
 

@@ -19,7 +19,7 @@ const login = (request, response) => {
   const password = `${req.body.pass}`;
 
   if (!username || !password) {
-    return res.status(400).json({ error: 'RAWR! All fields are required' });
+    return res.status(400).json({ error: 'All fields are required' });
   }
 
   return Account.AccountModel.authenticate(username, password, (err, account) => {
@@ -42,11 +42,11 @@ const signup = (request, response) => {
   req.body.pass2 = `${req.body.pass2}`;
 
   if (!req.body.username || !req.body.pass || !req.body.pass2) {
-    return res.status(400).json({ error: 'RAWR! All fields are required' });
+    return res.status(400).json({ error: 'All fields are required' });
   }
 
   if (req.body.pass !== req.body.pass2) {
-    return res.status(400).json({ error: 'RAWR! Passwords do not match' });
+    return res.status(400).json({ error: 'Passwords do not match' });
   }
 
   return Account.AccountModel.generateHash(req.body.pass, (salt, hash) => {
@@ -88,8 +88,44 @@ const getToken = (request, response) => {
   res.json(csrfJSON);
 };
 
+// - Adds a new friend to the current user, and updates the page to reflect the change
+const addFriend = (request, response) => {
+  const req = request;
+  const res = response;
+
+  const filter = {
+    _id: req.session.account._id,
+  };
+
+  //let currFriends = req.session.friends || [];
+  //currFriends.push({name:req.body.username})
+  const update = {
+    $push: { friends: {name:req.body.username} },
+  };
+
+  return Account.AccountModel.updateOne(filter, update, (err,) => {
+    if(err){
+      console.log(err);
+      return res.status(400).json({error:'An error has occurred'});
+    }
+
+    return Account.AccountModel.findOne(filter,(err,doc)=>{
+      if(err){
+        console.log(err);
+        return res.status(400).json({error:'An error has occurred'});
+      }
+
+      req.session.account.friends = doc.friends;
+      return res.json({redirect:'/portal'});
+
+    });
+  });
+};
+
+
 module.exports.loginPage = loginPage;
 module.exports.login = login;
 module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
+module.exports.addFriend = addFriend;

@@ -1,14 +1,21 @@
 "use strict";
 
-console.log('hi from login.tsx');
-$('#loginForm').on('submit', function (e) {
+console.log("hi from portal.tsx");
+$('#friendForm').on('submit', function (e) {
   e.preventDefault();
   /*const path = $('#signupForm').attr('action');
   sendFetch(path !== undefined?path:'/', {method:'POST',body:$("#signupForm").serialize()}
   ,(res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
 
-  var path = $('#loginForm').attr('action');
-  sendAjax(path !== undefined ? path : '/', $('#loginForm').serialize());
+  var path = $('#friendForm').attr('action');
+  sendAjax(path !== undefined ? path : '/', $('#friendForm').serialize());
+});
+$(document).ready(function () {
+  $('.friendsLi').each(function (index, el) {
+    ReactDOM.render( /*#__PURE__*/React.createElement(LISTITEM, {
+      name: $(el).attr('name-prop')
+    }), el);
+  });
 });
 "use strict";
 /*declare namespace JSX {

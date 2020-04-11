@@ -27,6 +27,17 @@ $('#signupForm').on('submit', function (e) {
     }
 }*/
 
+var LISTITEM = function LISTITEM(props) {
+  return (/*#__PURE__*/React.createElement("li", {
+      className: "mdl-list__item"
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "mdl-list__item-primary-content"
+    }, /*#__PURE__*/React.createElement("i", {
+      className: "material-icons mdl-list__item-icon"
+    }, "person"), props.name))
+  );
+};
+
 var TITLE = function TITLE(props) {
   return (/*#__PURE__*/React.createElement("h1", null, "Working!")
   );

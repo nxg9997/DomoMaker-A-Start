@@ -36,11 +36,37 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-grid">
-                    <h1>Portal</h1>
+                    <div class="mdl-cell--12-col">
+                        <h1>Welcome, {{username}}</h1>
+                    </div>
+                    <div class="mdl-cell--12-col mdl-grid">
+                        <div class="mdl-cell--4-col color-red small-margin">
+                            <h4>Friends List</h4>
+                            <ul class="demo-list-icon mdl-list">
+                                {{#if friends}}
+                                    {{#each friends}}
+                                        <section class="friendsLi" name-prop={{this.name}}></section>
+                                    {{/each}}
+                                {{/if}}
+                            </ul>
+                            <div class="addFriend">
+                                <form id="friendForm" action="/addFriend" method="POST">
+                                    <div>
+                                        <input type="text" name="username" placeholder="Username" />
+                                        <input type="hidden" name="_csrf" value={{csrfToken}} />
+                                        <input type="submit" value="Add!" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="mdl-cell--6-col color-red height-100 small-margin">
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 </body>
-<script src="/assets/signupBundle.js"></script>
+<script src="/assets/portalBundle.js"></script>
 </html>

@@ -36,16 +36,41 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-grid">
-                    <form id="signupForm" name="signupForm" action="/signup" method="POST">
-                        <label for="username">Username: </label>
-                        <input type="text" name="username" placeholder="username" />
-                        <label for="password">Password: </label>
-                        <input type="password" name="pass" placeholder="password" />
-                        <label for="password2">Retype Password: </label>
-                        <input type="password" name="pass2" placeholder="retype password" />
-                        <input type="hidden" name="_csrf" value={{csrfToken}} />
-                        <input type="submit" value="Sign Up" />
-                    </form>
+                    <div class="mdl-cell--12-col mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-cell--6-col">
+                            <h1 class="text-center">Sign Up</h1>
+                        </div>
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                    <div class="mdl-cell--12-col mdl-grid">
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-cell--6-col">
+                            <form id="signupForm" name="signupForm" action="/signup" method="POST">
+                                <div class="text-center small-padding">
+                                    <label for="username">Username: </label>
+                                    <input type="text" name="username" placeholder="username" />
+                                </div>
+                                
+                                <div class="text-center small-padding">
+                                    <label for="password">Password: </label>
+                                    <input type="password" name="pass" placeholder="password" />
+                                </div>
+                                
+                                <div class="text-center small-padding">
+                                    <label for="password2">Retype Password: </label>
+                                    <input type="password" name="pass2" placeholder="retype password" />
+                                </div>
+                                
+
+                                <input type="hidden" name="_csrf" value={{csrfToken}} />
+                                <input class="half-width center-in-parent small-padding" type="submit" value="Sign Up" />
+                            </form>
+                        </div>
+                        
+                        <div class="mdl-layout-spacer"></div>
+                    </div>
+                    
                 </div>
             </div>
         </main>

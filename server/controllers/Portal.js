@@ -1,10 +1,11 @@
 
 const renderPortal = (navs, req, res) => {
-  res.render('portal', { navlinks: navs, csrfToken: req.csrfToken() });
+  console.log(req.session.account);
+  res.render('portal', { navlinks: navs, csrfToken: req.csrfToken(), username:req.session.account.username, friends: req.session.account.friends });
 };
 
 const portal = (req, res) => {
-  renderPortal([{ text: 'Test', href: '/' }, { text: 'Log Out', href: '/logout' }], req, res);
+  renderPortal([{ text: 'Home', href: '/' }, { text: 'Log Out', href: '/logout' }], req, res);
 };
 
 module.exports.portal = portal;

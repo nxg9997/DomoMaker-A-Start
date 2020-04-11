@@ -14,6 +14,14 @@
       [elemName:string]:any;
     }
 }*/
+const LISTITEM = (props) => {
+    return (<li className="mdl-list__item">
+      <span className="mdl-list__item-primary-content">
+        <i className="material-icons mdl-list__item-icon">person</i>
+        {props.name}
+      </span>
+    </li>);
+};
 const TITLE = (props) => {
     return (<h1>Working!</h1>);
 };
