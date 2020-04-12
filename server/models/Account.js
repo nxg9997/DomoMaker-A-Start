@@ -34,7 +34,7 @@ const AccountSchema = new mongoose.Schema({
   },
   messages: {
     type: Array,
-    default: [{name:'G-Link', message:'Welcome to G-Link!'}],
+    default: [{ name: 'G-Link', message: 'Welcome to G-Link!' }],
   },
 });
 

@@ -25,7 +25,9 @@ const DETAILEDLI = (props:any) => {
         </span>
       </span>
       <span className="mdl-list__item-secondary-content">
-        <a className="mdl-list__item-secondary-action" href="#"><i className="material-icons">star</i></a>
+        <a className="mdl-list__item-secondary-action" href="#">
+          <i className="material-icons">star</i>
+        </a>
       </span>
     </li>
   );

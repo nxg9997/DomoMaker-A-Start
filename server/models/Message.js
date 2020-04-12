@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-const _ = require('underscore');
+// const _ = require('underscore');
 
 let MessageModel = {};
 
@@ -43,11 +43,11 @@ MessageSchema.statics.findBySender = (sender, callback) => {
 };
 
 MessageSchema.statics.findByReceiver = (receiver, callback) => {
-    const search = {
-      to: receiver,
-    };
-  
-    return MessageModel.find(search).select('from to text').lean().exec(callback);
+  const search = {
+    to: receiver,
+  };
+
+  return MessageModel.find(search).select('from to text').lean().exec(callback);
 };
 
 MessageModel = mongoose.model('Message', MessageSchema);

@@ -63,7 +63,6 @@ const signup = (request, response) => {
     savePromise.then(() => {
       req.session.account = Account.AccountModel.toAPI(newAccount);
 
-      
 
       return res.json({ redirect: '/portal' });
     });
@@ -100,27 +99,26 @@ const addFriend = (request, response) => {
     _id: req.session.account._id,
   };
 
-  //let currFriends = req.session.friends || [];
-  //currFriends.push({name:req.body.username})
+  // let currFriends = req.session.friends || [];
+  // currFriends.push({name:req.body.username})
   const update = {
-    $push: { friends: {name:req.body.username} },
+    $push: { friends: { name: req.body.username } },
   };
 
-  return Account.AccountModel.updateOne(filter, update, (err,) => {
-    if(err){
+  return Account.AccountModel.updateOne(filter, update, (err) => {
+    if (err) {
       console.log(err);
-      return res.status(400).json({error:'An error has occurred'});
+      return res.status(400).json({ error: 'An error has occurred' });
     }
 
-    return Account.AccountModel.findOne(filter,(err,doc)=>{
-      if(err){
-        console.log(err);
-        return res.status(400).json({error:'An error has occurred'});
+    return Account.AccountModel.findOne(filter, (err2, doc) => {
+      if (err2) {
+        console.log(err2);
+        return res.status(400).json({ error: 'An error has occurred' });
       }
 
       req.session.account.friends = doc.friends;
-      return res.json({redirect:'/portal'});
-
+      return res.json({ redirect: '/portal' });
     });
   });
 };

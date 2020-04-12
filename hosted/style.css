@@ -37,6 +37,16 @@ form {
     background-color: red;
 }
 
+.outline-red {
+    border: 1px solid red;
+    border-radius: 5px;
+}
+
+.outline-black {
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
 .height-100 {
     height: 100px;
 }
