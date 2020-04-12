@@ -1,5 +1,5 @@
 const renderSignup = (navs, req, res) => {
-  res.render('Signup', { navlinks: navs, csrfToken: req.csrfToken() });
+  res.render('signup', { navlinks: navs, csrfToken: req.csrfToken() });
 };
 
 const signup = (req, res) => {
