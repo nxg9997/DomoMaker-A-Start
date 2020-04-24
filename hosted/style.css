@@ -50,3 +50,11 @@ form {
 .height-100 {
     height: 100px;
 }
+
+.display-flex {
+    display: flex;
+}
+
+.flex-vert{
+    flex-direction: column;
+}

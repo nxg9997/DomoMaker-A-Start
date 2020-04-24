@@ -25,7 +25,7 @@ const makeMsg = (req, res) => {
 
     const msgPromise = newMsg.save();
 
-    msgPromise.then(() => res.json({ redirect: '/portal' }));
+    msgPromise.then(() => res.json({ redirect: '/messages' }));
 
     msgPromise.catch((err2) => {
       console.log(err2);

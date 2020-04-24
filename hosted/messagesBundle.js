@@ -1,15 +1,6 @@
 "use strict";
 
-console.log('hi from portal.tsx');
-$('#friendForm').on('submit', function (e) {
-  e.preventDefault();
-  /*const path = $('#signupForm').attr('action');
-  sendFetch(path !== undefined?path:'/', {method:'POST',body:$("#signupForm").serialize()}
-  ,(res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
-
-  var path = $('#friendForm').attr('action');
-  sendAjax(path !== undefined ? path : '/', $('#friendForm').serialize());
-});
+console.log('hi from msgs.tsx');
 $('#msgForm').on('submit', function (e) {
   e.preventDefault();
   /*const path = $('#signupForm').attr('action');
@@ -18,19 +9,6 @@ $('#msgForm').on('submit', function (e) {
 
   var path = $('#msgForm').attr('action');
   sendAjax(path !== undefined ? path : '/', $('#msgForm').serialize());
-});
-$(document).ready(function () {
-  $('.friendsLi').each(function (index, el) {
-    ReactDOM.render( /*#__PURE__*/React.createElement(LISTITEM, {
-      name: $(el).attr('name-prop')
-    }), el);
-  });
-  $('.messageLi').each(function (index, el) {
-    ReactDOM.render( /*#__PURE__*/React.createElement(DETAILEDLI, {
-      name: $(el).attr('name-prop'),
-      message: $(el).attr('msg-prop')
-    }), el);
-  });
 });
 "use strict";
 /*declare namespace JSX {
