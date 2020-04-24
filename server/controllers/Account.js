@@ -123,6 +123,38 @@ const addFriend = (request, response) => {
   });
 };
 
+// - Adds a new game to the current user, and updates the page to reflect the change
+const addGame = (request, response) => {
+  const req = request;
+  const res = response;
+
+  const filter = {
+    _id: req.session.account._id,
+  };
+
+  
+  const update = {
+    $push: { games: { name: req.body.name, link: req.body.link } },
+  };
+
+  return Account.AccountModel.updateOne(filter, update, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error has occurred' });
+    }
+
+    return Account.AccountModel.findOne(filter, (err2, doc) => {
+      if (err2) {
+        console.log(err2);
+        return res.status(400).json({ error: 'An error has occurred' });
+      }
+
+      req.session.account.games = doc.games;
+      return res.json({ redirect: '/portal' });
+    });
+  });
+};
+
 
 module.exports.loginPage = loginPage;
 module.exports.login = login;
@@ -130,3 +162,4 @@ module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
 module.exports.addFriend = addFriend;
+module.exports.addGame = addGame;

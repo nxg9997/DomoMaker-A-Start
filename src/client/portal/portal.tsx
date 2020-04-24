@@ -23,6 +23,10 @@ $(document).ready(() => {
     ReactDOM.render(<LISTITEM name={$(el).attr('name-prop')}></LISTITEM>, el);
   });
 
+  $('.game-card').each((index, el) => {
+    ReactDOM.render(<GAMECARD name={$(el).attr('name-prop')} link={$(el).attr('link-prop')}></GAMECARD>, el);
+  });
+
   $('.messageLi').each((index, el) => {
     ReactDOM.render(
         <DETAILEDLI name={$(el).attr('name-prop')} message={$(el).attr('msg-prop')}>

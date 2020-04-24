@@ -14,6 +14,38 @@
       [elemName:string]:any;
     }
 }*/
+const getThumbLink = (game) => {
+    switch (game) {
+        case 'Rocket':
+            return '/rocketleague.jpg';
+            break;
+        case 'League':
+            return '/lol.jpg';
+            break;
+        case 'Rainbow':
+            return '/r6.jpeg';
+            break;
+        default:
+            return '/cs.png';
+            break;
+    }
+};
+const GAMECARD = (props) => {
+    //console.log(props.name);
+    /*<h2 className="mdl-card__title-text">{
+            props.name === "Rocket" ? "Rocket League" : props.name === "League" ? "League of Legends" : props.name === "Rainbow" ? "Rainbow 6: Siege" : "CS:GO"
+          }</h2>*/
+    return (<div className="demo-card-square mdl-card mdl-shadow--2dp small-width">
+      <div className={"mdl-card__title mdl-card--expand " + props.name.replace(/:/g, '') + "-game"}>
+        
+      </div>
+      <div className="mdl-card__actions mdl-card--border">
+        <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href={props.link}>
+          Profile
+        </a>
+      </div>
+    </div>);
+};
 const DETAILEDLI = (props) => {
     return (<li className="mdl-list__item mdl-list__item--three-line">
       <span className="mdl-list__item-primary-content">

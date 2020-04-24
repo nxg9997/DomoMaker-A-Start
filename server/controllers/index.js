@@ -5,3 +5,4 @@ module.exports.Signup = require('./Signup');
 module.exports.Portal = require('./Portal');
 module.exports.Login = require('./Login');
 module.exports.Messages = require('./Messages');
+module.exports.Game = require('./Game');

@@ -7,4 +7,4 @@ $('#msgForm').on('submit', (e) => {
         ,(res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
     const path = $('#msgForm').attr('action');
     sendAjax(path !== undefined ? path :'/', $('#msgForm').serialize());
-  });
+});

@@ -36,6 +36,10 @@ const AccountSchema = new mongoose.Schema({
     type: Array,
     default: [{ name: 'G-Link', message: 'Welcome to G-Link!' }],
   },
+  games: {
+    type: Array,
+    default: [/*{ name: 'Rocket League', link: 'rocketleague.tracker/user' }*/],
+  },
 });
 
 AccountSchema.statics.toAPI = (doc) => ({
@@ -44,6 +48,7 @@ AccountSchema.statics.toAPI = (doc) => ({
   _id: doc._id,
   friends: doc.friends,
   messages: doc.messages,
+  games: doc.games,
 });
 
 const validatePassword = (doc, password, callback) => {

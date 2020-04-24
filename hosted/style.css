@@ -38,8 +38,8 @@ form {
 }
 
 .outline-red {
-    border: 1px solid red;
-    border-radius: 5px;
+    /*border: 1px solid red;
+    border-radius: 5px;*/
 }
 
 .outline-black {
@@ -57,4 +57,32 @@ form {
 
 .flex-vert{
     flex-direction: column;
+}
+
+.Rocket-game {
+    background-image: url('./img/rocketleague.jpg');
+    background-size: cover;
+}
+
+.League-game {
+    background-image: url('./img/lol.jpg');
+    background-size: cover;
+}
+
+.Rainbow-game {
+    background-image: url('./img/r6.jpeg');
+    background-size: cover;
+}
+
+.CSGO-game {
+    background-image: url('./img/cs.png');
+    background-size: cover;
+}
+
+.small-height {
+    height: 5%;
+}
+
+.small-width {
+    width: 17.5vw;
 }
