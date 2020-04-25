@@ -11,12 +11,14 @@ const router = (app) => {
   app.get('/logout', mid.requiresLogin, controllers.Account.logout);
   app.get('/portal', mid.requiresLogin, controllers.Portal.portal);
   app.get('/messages', mid.requiresLogin, controllers.Messages.messages);
+  app.get('/settings', mid.requiresLogin, controllers.Settings.settings);
   // app.post('/maker', mid.requiresLogin, controllers.Domo.make);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Home.homePage);
 
   app.post('/addFriend', mid.requiresSecure, mid.requiresLogin, controllers.Account.addFriend);
   app.post('/addGame', mid.requiresSecure, mid.requiresLogin, controllers.Game.make);
   app.post('/sendMsg', mid.requiresSecure, mid.requiresLogin, controllers.Message.make);
+  app.post('/changePassword', mid.requiresSecure, mid.requiresLogin, controllers.Account.changePassword);
 
   // app.post('/domodel', mid.requiresSecure, controllers.Domo.domoDel);
 };

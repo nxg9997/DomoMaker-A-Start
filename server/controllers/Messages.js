@@ -13,7 +13,7 @@ const renderMessages = (navs, req, res) => {
   };
   
   const messages = (req, res) => {
-    renderMessages([{ text: 'Home', href: '/' }, { text: 'Log Out', href: '/logout' }], req, res);
+    renderMessages([{ text: 'Home', href: '/' }, { text: 'Settings', href: '/settings' }, { text: 'Log Out', href: '/logout' }], req, res);
   };
   
   module.exports.messages = messages;

@@ -40,36 +40,41 @@
                         <h1>Welcome, {{username}}</h1>
                     </div>
                     <div class="mdl-grid mdl-cell--12-col outline-red">
-                        <div class="mdl-cell--12-col mdl-grid">
-                            <h2>My Games</h2>
-                        </div>
-                        <div class="mdl-cell--12-col mdl-grid outline-red">
-                            {{#if games}}
-                                {{#each games}}
-                                    <div class="game-card small-margin" name-prop={{this.name}} link-prop={{this.link}} ></div>
-                                {{/each}}
-                            {{/if}}
-                        </div>
-                        <div class="mdl-cell--12-col mdl-grid outline-red">
-                            <div class="mdl-cell--12-col">
-                                <h4>Add Game</h4>
+                        
+                        <div class="mdl-cell--6-col mdl-grid outline-red">
+                            <div class="mdl-cell--12-col mdl-grid">
+                                <h4>My Games</h4>
                             </div>
-                            <div class="mdl-cell--12-col">
-                                <form id="addGame" action="/addGame" method="POST" >
-                                    <select name="name">
-                                        <option value="Rocket League">Rocket League</option>
-                                        <option value="League of Legends">League of Legends</option>
-                                        <option value="Rainbow 6: Siege">Rainbow 6: Siege</option>
-                                        <option value="CS:GO">CS:GO</option>
-                                    </select>
-                                    <input type="text" name="link" placeholder="Link to Profile" />
-                                    <input type="hidden" name="_csrf" value={{csrfToken}} />
-                                    <input type="submit" value="Add!" />
-                                </form>
+                            <div class="mdl-cell--12-col mdl-grid">
+                                {{#if games}}
+                                    {{#each games}}
+                                        <div class="game-card small-margin" name-prop={{this.name}} link-prop={{this.link}} ></div>
+                                    {{/each}}
+                                {{/if}}
+                                <div class="small-margin">
+                                    <div class="demo-card-square mdl-card mdl-shadow--2dp small-width">
+                                        <div class="mdl-card__title mdl-card--expand">
+                                            <h2 class="mdl-card__title-text">Add Game</h2>
+                                        </div>
+                                        <div class="mdl-card__supporting-text">
+                                            <div>
+                                                <form id="addGame" action="/addGame" method="POST" >
+                                                    <select name="name">
+                                                        <option value="Rocket League">Rocket League</option>
+                                                        <option value="League of Legends">League of Legends</option>
+                                                        <option value="Rainbow 6: Siege">Rainbow 6: Siege</option>
+                                                        <option value="CS:GO">CS:GO</option>
+                                                    </select>
+                                                    <input type="text" name="link" placeholder="Link to Profile" />
+                                                    <input type="hidden" name="_csrf" value={{csrfToken}} />
+                                                    <input type="submit" value="Add!" />
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="mdl-cell--12-col mdl-grid">
                         <div class="mdl-cell--4-col outline-red small-margin">
                             <h4>Friends List</h4>
                             <ul class="mdl-list">
@@ -89,35 +94,9 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="mdl-cell--6-col outline-red small-margin">
-                            <h4>Messages</h4>
-                            <ul class="mdl-list">
-                                {{#if messages}}
-                                    {{#each messages}}
-                                        <li class="mdl-list__item mdl-list__item--three-line">
-                                            <span class="mdl-list__item-primary-content">
-                                                <i class="material-icons mdl-list__item-avatar">person</i>
-                                                <span>{{this.from}}</span>
-                                                <span class="mdl-list__item-text-body">
-                                                    {{this.text}}
-                                                </span>
-                                            </span>
-                                            <span class="mdl-list__item-secondary-content">
-                                                <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">error</i></a>
-                                            </span>
-                                        </li>
-                                    {{/each}}
-                                {{/if}}
-                            </ul>
-                            <form id="msgForm" action="/sendMsg" method="POST" class="outline-black">
-                                <div>
-                                    <input type="text" name="to" placeholder="Username" />
-                                    <input type="text" name="text" placeholder="Message" />
-                                    <input type="hidden" name="_csrf" value={{csrfToken}} />
-                                    <input type="submit" value="Send!" />
-                                </div>
-                            </form>
-                        </div>
+                    </div>
+                    <div class="mdl-cell--12-col mdl-grid">
+                        
                     </div>
                 </div>
             </div>

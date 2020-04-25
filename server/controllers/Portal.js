@@ -20,7 +20,7 @@ const renderPortal = (navs, req, res) => {
 };
 
 const portal = (req, res) => {
-  renderPortal([{ text: 'Home', href: '/' }, { text: 'Messages', href: '/messages' }, { text: 'Log Out', href: '/logout' }], req, res);
+  renderPortal([{ text: 'Home', href: '/' }, { text: 'Messages', href: '/messages' }, { text: 'Settings', href: '/settings' }, { text: 'Log Out', href: '/logout' }], req, res);
 };
 
 module.exports.portal = portal;

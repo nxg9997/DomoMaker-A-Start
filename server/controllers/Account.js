@@ -79,6 +79,42 @@ const signup = (request, response) => {
   });
 };
 
+const changePassword = (request, response) => {
+  const req = request;
+  const res = response;
+
+  req.body.pass = `${req.body.pass}`;
+  req.body.pass2 = `${req.body.pass2}`;
+  req.body.newPass = `${req.body.newPass}`;
+
+  if (!req.body.pass || !req.body.pass2 || !req.body.newPass) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  if (req.body.pass !== req.body.pass2) {
+    return res.status(400).json({ error: 'Passwords do not match' });
+  }
+
+  return Account.AccountModel.generateHash(req.body.newPass, (salt, hash) => {
+    const filter = {
+      _id: req.session.account._id,
+    };
+
+    const update = {
+      $set: { password: hash, salt: salt },
+    };
+
+    return Account.AccountModel.updateOne(filter, update, (err) => {
+      if (err) {
+        console.log(err);
+        return res.status(400).json({ error: 'An error has occurred' });
+      }
+
+      return res.json({redirect:"/portal"});
+    });
+  });
+};
+
 const getToken = (request, response) => {
   const req = request;
   const res = response;
@@ -163,3 +199,4 @@ module.exports.signup = signup;
 module.exports.getToken = getToken;
 module.exports.addFriend = addFriend;
 module.exports.addGame = addGame;
+module.exports.changePassword = changePassword;
