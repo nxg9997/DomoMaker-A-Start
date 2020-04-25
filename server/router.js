@@ -19,6 +19,7 @@ const router = (app) => {
   app.post('/addGame', mid.requiresSecure, mid.requiresLogin, controllers.Game.make);
   app.post('/sendMsg', mid.requiresSecure, mid.requiresLogin, controllers.Message.make);
   app.post('/changePassword', mid.requiresSecure, mid.requiresLogin, controllers.Account.changePassword);
+  app.get('/premium', mid.requiresSecure, mid.requiresLogin, controllers.Account.setPremium);
 
   // app.post('/domodel', mid.requiresSecure, controllers.Domo.domoDel);
 };

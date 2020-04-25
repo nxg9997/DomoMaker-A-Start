@@ -86,3 +86,7 @@ form {
 .small-width {
     width: 17.5vw;
 }
+
+#changePassword {
+    max-width: 25vw;
+}

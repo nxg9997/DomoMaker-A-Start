@@ -1,14 +1,13 @@
 "use strict";
 
-console.log('hi from msgs.tsx');
-$('#msgForm').on('submit', function (e) {
-  e.preventDefault();
-  /*const path = $('#signupForm').attr('action');
-  sendFetch(path !== undefined?path:'/', {method:'POST',body:$("#signupForm").serialize()}
-  ,(res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
-
-  var path = $('#msgForm').attr('action');
-  sendAjax(path !== undefined ? path : '/', $('#msgForm').serialize());
+$("#buyPremium").on('click', function () {
+  fetch('/premium', {
+    method: 'GET'
+  }).then(function (res) {
+    res.json().then(function (data) {
+      window.location = data.redirect;
+    });
+  });
 });
 "use strict";
 /*declare namespace JSX {

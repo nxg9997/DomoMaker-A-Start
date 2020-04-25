@@ -2,6 +2,7 @@ const renderSettings = (navs, req, res) => {
         res.render('settings', {
           navlinks: navs,
           csrfToken: req.csrfToken(),
+          premium: req.session.account.premium,
         });
     //res.render('messages', { navlinks: navs, csrfToken: req.csrfToken() });
   };

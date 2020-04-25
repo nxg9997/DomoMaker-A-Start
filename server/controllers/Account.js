@@ -126,10 +126,45 @@ const getToken = (request, response) => {
   res.json(csrfJSON);
 };
 
+const setPremium = (request, response) => {
+  const req = request;
+  const res = response;
+
+  const filter = {
+    _id: req.session.account._id,
+  };
+
+  const update = {
+    $set: { premium: !req.session.account.premium },
+  };
+
+  return Account.AccountModel.updateOne(filter, update, (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(400).json({ error: 'An error has occurred' });
+    }
+
+    return Account.AccountModel.findOne(filter, (err2, doc) => {
+      if (err2) {
+        console.log(err2);
+        return res.status(400).json({ error: 'An error has occurred' });
+      }
+
+      req.session.account.premium = doc.premium;
+      return res.json({ redirect: '/portal' });
+    });
+  });
+};
+
 // - Adds a new friend to the current user, and updates the page to reflect the change
 const addFriend = (request, response) => {
   const req = request;
   const res = response;
+
+  if(req.session.account.friends.length >= 5 && !req.session.account.premium){
+    console.log(`${req.session.account.username} is not premium`);
+    return res.status(400).json({error:"Account is not premium, max friends is 5"});
+  }
 
   const filter = {
     _id: req.session.account._id,
@@ -200,3 +235,4 @@ module.exports.getToken = getToken;
 module.exports.addFriend = addFriend;
 module.exports.addGame = addGame;
 module.exports.changePassword = changePassword;
+module.exports.setPremium = setPremium;

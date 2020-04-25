@@ -39,10 +39,32 @@
             <div class="page-content">
                 <div class="mdl-grid">
                     <div class="mdl-cell--12-col" >
-                        <p>Buy Premium</p>
+                        <h4>Buy Premium</h4>
+                        <div class="display-flex" >
+                            <p>Premium Active?</p>
+                            {{#if premium}}
+                                <i class="material-icons mdl-list__item-avatar">check_circle_outline</i>
+                            {{else}}
+                                <i class="material-icons mdl-list__item-avatar">clear</i>
+                            {{/if}}
+                        </div>
+                        <p>Premium Features:</p>
+                        <ul>
+                            <li>Ad-free experience!</li>
+                            <li>Unlimited friends list!</li>
+                            <li>Live chat!</li>
+                        </ul>
+                        <button id="buyPremium">Activate!</button>
                     </div>
                     <div class="mdl-cell--12-col" >
-                        <p>Change Password</p>
+                        <h4>Change Password</h4>
+                        <form id="changePassword" action="/changePassword" method="POST" >
+                            <input type="text" name="pass" placeholder="Password" />
+                            <input type="text" name="pass2" placeholder="Retype Password" />
+                            <input type="text" name="newPass" placeholder="New Password" />
+                            <input type="hidden" name="_csrf" value={{csrfToken}} class="small-margin" />
+                            <input type="submit" value="Change Password" />
+                        </form>
                     </div>
                     
                 </div>
@@ -50,5 +72,5 @@
         </main>
     </div>
 </body>
-<script src=""></script>
+<script src="/assets/settingsBundle.js"></script>
 </html>
