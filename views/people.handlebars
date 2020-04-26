@@ -38,43 +38,25 @@
         <main class="mdl-layout__content">
             <div class="page-content">
                 <div class="mdl-grid">
-                    <div class="mdl-cell--12-col" >
-                        <h4>Buy Premium</h4>
-                        <div class="display-flex" >
-                            <p>Premium Active?</p>
-                            {{#if premium}}
-                                <i class="material-icons mdl-list__item-avatar">check_circle_outline</i>
-                            {{else}}
-                                <i class="material-icons mdl-list__item-avatar">clear</i>
-                            {{/if}}
-                        </div>
-                        <p>Premium Features:</p>
-                        <ul>
-                            <li>Ad-free experience!</li>
-                            <li>Unlimited friends list!</li>
-                        </ul>
-                        <button id="buyPremium">{{#if premium}}Deactivate{{else}}Activate!{{/if}}</button>
+                    <div class="mdl-cell--12-col">
+                        <h2>Find Other Players!</h2>
                     </div>
                     {{#unless premium}}
                     <div class="mdl-cell--12-col ad-bar text-center">
                         <h3>This is an ad</h3>
                     </div>
                     {{/unless}}
-                    <div class="mdl-cell--12-col" >
-                        <h4>Change Password</h4>
-                        <form id="changePassword" action="/changePassword" method="POST" >
-                            <input type="text" name="pass" placeholder="Password" />
-                            <input type="text" name="pass2" placeholder="Retype Password" />
-                            <input type="text" name="newPass" placeholder="New Password" />
-                            <input type="hidden" name="_csrf" value={{csrfToken}} class="small-margin" />
-                            <input type="submit" value="Change Password" />
-                        </form>
+                    <div class="display-flex flex-vert mdl-cell--12-col small-margin" >
+                        {{#if users}}
+                            {{#each users}}
+                                <div class="user-card" name-prop={{this.name}} color-prop={{this.color}} csrf-prop={{this.csrfToken}} ></div>
+                            {{/each}}
+                        {{/if}}
                     </div>
-                    
                 </div>
             </div>
         </main>
     </div>
 </body>
-<script src="/assets/settingsBundle.js"></script>
+<script src="/assets/peopleBundle.js"></script>
 </html>

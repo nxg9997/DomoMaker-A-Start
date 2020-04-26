@@ -1,3 +1,4 @@
+// - renders the signup page
 const renderSignup = (navs, req, res) => {
   res.render('signup', { navlinks: navs, csrfToken: req.csrfToken() });
 };

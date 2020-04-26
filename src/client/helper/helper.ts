@@ -1,5 +1,6 @@
-console.log('hi from helper');
+// console.log('hi from helper');
 
+// - defines a fetch request type
 interface FetchReq {
   method: string;
   body?: string | Blob | ArrayBufferView | ArrayBuffer | FormData |
@@ -7,10 +8,12 @@ interface FetchReq {
   headers?: Headers | string[][] | Record<string, string> | undefined;
 }
 
+// - redirects to the given path
 const redirect = (path: Location) => {
   window.location = path;
 };
 
+// - sends an ajax call based on the action (path), and a data object
 const sendAjax = (action:string, data:any) => {
   $.ajax({
     data,

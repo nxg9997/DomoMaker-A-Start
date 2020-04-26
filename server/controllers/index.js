@@ -7,3 +7,4 @@ module.exports.Login = require('./Login');
 module.exports.Messages = require('./Messages');
 module.exports.Game = require('./Game');
 module.exports.Settings = require('./Settings');
+module.exports.People = require('./People');

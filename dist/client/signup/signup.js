@@ -1,5 +1,5 @@
 "use strict";
-console.log('hi from signup.tsx');
+// console.log('hi from signup.tsx');
 $('#signupForm').on('submit', (e) => {
     e.preventDefault();
     /*const path = $('#signupForm').attr('action');

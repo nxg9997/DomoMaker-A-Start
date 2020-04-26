@@ -1,3 +1,3 @@
 "use strict";
-console.log('from testing');
+// console.log('from testing');
 //# sourceMappingURL=testing.js.map

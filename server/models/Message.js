@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise;
 
 let MessageModel = {};
 
+// - creates a message schema
 const MessageSchema = new mongoose.Schema({
   from: {
     type: String,
@@ -27,6 +28,7 @@ const MessageSchema = new mongoose.Schema({
   },
 });
 
+// - returns a message object
 MessageSchema.statics.toAPI = (doc) => ({
   from: doc.from,
   to: doc.to,
@@ -34,6 +36,7 @@ MessageSchema.statics.toAPI = (doc) => ({
   date: doc.createdData,
 });
 
+// - gets a message object by the sender
 MessageSchema.statics.findBySender = (sender, callback) => {
   const search = {
     from: sender,
@@ -42,6 +45,7 @@ MessageSchema.statics.findBySender = (sender, callback) => {
   return MessageModel.find(search).select('from to text').lean().exec(callback);
 };
 
+// - gets a message object by the reciever
 MessageSchema.statics.findByReceiver = (receiver, callback) => {
   const search = {
     to: receiver,

@@ -44,6 +44,11 @@
                             <h1>Messages</h1>
                             <div class="mdl-layout-spacer"></div>
                         </div>
+                        {{#unless premium}}
+                            <div class="mdl-cell--12-col ad-bar text-center">
+                                <h3>This is an ad</h3>
+                            </div>
+                        {{/unless}}
                         <div class="mdl-cell--12-col mdl-grid">
                             <div class="mdl-cell--6-col outline-red small-margin">
                                 <h4 class="text-center">Your Messages</h4>

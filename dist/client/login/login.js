@@ -1,5 +1,6 @@
 "use strict";
-console.log('hi from login.tsx');
+// console.log('hi from login.tsx');
+// - sends a login request using the login form
 $('#loginForm').on('submit', (e) => {
     e.preventDefault();
     /*const path = $('#signupForm').attr('action');

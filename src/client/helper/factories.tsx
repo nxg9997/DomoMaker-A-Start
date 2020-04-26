@@ -14,7 +14,8 @@
     }
 }*/
 
-const getThumbLink = (game: String) => {
+// - returns a link to a game thumbnail based on the first word in the game title
+const getThumbLink = (game: string) => {
   switch (game) {
     case 'Rocket': return '/rocketleague.jpg'; break;
     case 'League': return '/lol.jpg'; break;
@@ -23,25 +24,54 @@ const getThumbLink = (game: String) => {
   }
 };
 
+// - React components - //
+
+// - returns a material card with the user's name and option to add them as a friend
+const PERSON = (props:any) => {
+  // console.log(props);
+  return(
+    <div className={
+      `demo-card-square mdl-card mdl-shadow--2dp user-card-child ${props.color}-color`
+      } >
+      <div className={'mdl-card__title mdl-card--expand'} >
+        <div className="display-flex" >
+          <h2>{props.name}</h2>
+        </div>
+
+      </div>
+      <div className="display-flex">
+        <div className="mdl-card__actions mdl-card--border">
+          <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect add-friend" placeholder={props.name} accessKey={props.csrfToken} >
+            Add Friend
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  );
+};
+
+// - returns a material card for game information
 const GAMECARD = (props:any) => {
-  //console.log(props.name);
-  /*<h2 className="mdl-card__title-text">{
-          props.name === "Rocket" ? "Rocket League" : props.name === "League" ? "League of Legends" : props.name === "Rainbow" ? "Rainbow 6: Siege" : "CS:GO"
-        }</h2>*/
   return(
     <div className="demo-card-square mdl-card mdl-shadow--2dp small-width" >
-      <div className={"mdl-card__title mdl-card--expand " + props.name.replace(/:/g,'') + "-game" } >
-        
+      <div className={
+        `mdl-card__title mdl-card--expand ${props.name.replace(/:/g, '')}-game`
+      } >
+
       </div>
       <div className="mdl-card__actions mdl-card--border">
-        <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href={props.link} >
+        <a className="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
+         href={props.link} >
           Profile
         </a>
       </div>
     </div>
-  )
+  );
 };
 
+// - returns a list item that is formatted to best fit a message
 const DETAILEDLI = (props:any) => {
   return(
     <li className="mdl-list__item mdl-list__item--three-line">
@@ -61,6 +91,7 @@ const DETAILEDLI = (props:any) => {
   );
 };
 
+// - returns a basic list item containing a name of a user
 const LISTITEM = (props:any) => {
   return(
     <li className="mdl-list__item">
@@ -72,6 +103,7 @@ const LISTITEM = (props:any) => {
   );
 };
 
+// - unused, originally for prototyping
 const TITLE = (props:any) => {
   return(
         <h1>Working!</h1>
@@ -79,12 +111,14 @@ const TITLE = (props:any) => {
   );
 };
 
+// - creates a new link for the navigation bar
 const NAVLINK = (props:any) => {
   return(
         <a className="mdl-navigation__link" href={props.href}>{props.text}</a>
   );
 };
 
+// - creates an entire navigation bar, unused in final version
 const NAVBAR = (props:any) => {
   const test = [0, 1, 2];
   return (
@@ -110,6 +144,7 @@ const NAVBAR = (props:any) => {
   );
 };
 
+// - creates a material grid
 const GRID = (props:any) => {
   return(
         <div className="mdl-grid">
@@ -118,6 +153,7 @@ const GRID = (props:any) => {
   );
 };
 
+// - creates a material cell
 const CELL = (props:any) => {
   if (props.size === undefined) props.size = 1;
   const cellClass = `mdl-cell--${props.size}-col`;
@@ -126,6 +162,7 @@ const CELL = (props:any) => {
   );
 };
 
+// - creates a material button
 const BUTTON = (props:any) => {
   return(
         <a href={props.href}><button className="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">

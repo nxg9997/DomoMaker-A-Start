@@ -1,3 +1,4 @@
+// - renders the login page
 const renderLogin = (navs, req, res) => {
   res.render('login', { navlinks: navs, csrfToken: req.csrfToken() });
 };

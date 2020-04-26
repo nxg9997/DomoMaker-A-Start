@@ -1,6 +1,6 @@
-"use strict";
+"use strict"; // console.log('hi from msgs.tsx');
+// - sends a new message based on the message form
 
-console.log('hi from msgs.tsx');
 $('#msgForm').on('submit', function (e) {
   e.preventDefault();
   /*const path = $('#signupForm').attr('action');
@@ -26,6 +26,7 @@ $('#msgForm').on('submit', function (e) {
       [elemName:string]:any;
     }
 }*/
+// - returns a link to a game thumbnail based on the first word in the game title
 
 var getThumbLink = function getThumbLink(game) {
   switch (game) {
@@ -45,18 +46,36 @@ var getThumbLink = function getThumbLink(game) {
       return '/cs.png';
       break;
   }
-};
+}; // - React components - //
+// - returns a material card with the user's name and option to add them as a friend
+
+
+var PERSON = function PERSON(props) {
+  // console.log(props);
+  return (/*#__PURE__*/React.createElement("div", {
+      className: "demo-card-square mdl-card mdl-shadow--2dp user-card-child ".concat(props.color, "-color")
+    }, /*#__PURE__*/React.createElement("div", {
+      className: 'mdl-card__title mdl-card--expand'
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "display-flex"
+    }, /*#__PURE__*/React.createElement("h2", null, props.name))), /*#__PURE__*/React.createElement("div", {
+      className: "display-flex"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "mdl-card__actions mdl-card--border"
+    }, /*#__PURE__*/React.createElement("a", {
+      className: "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect add-friend",
+      placeholder: props.name,
+      accessKey: props.csrfToken
+    }, "Add Friend"))))
+  );
+}; // - returns a material card for game information
+
 
 var GAMECARD = function GAMECARD(props) {
-  //console.log(props.name);
-
-  /*<h2 className="mdl-card__title-text">{
-          props.name === "Rocket" ? "Rocket League" : props.name === "League" ? "League of Legends" : props.name === "Rainbow" ? "Rainbow 6: Siege" : "CS:GO"
-        }</h2>*/
   return (/*#__PURE__*/React.createElement("div", {
       className: "demo-card-square mdl-card mdl-shadow--2dp small-width"
     }, /*#__PURE__*/React.createElement("div", {
-      className: "mdl-card__title mdl-card--expand " + props.name.replace(/:/g, '') + "-game"
+      className: "mdl-card__title mdl-card--expand ".concat(props.name.replace(/:/g, ''), "-game")
     }), /*#__PURE__*/React.createElement("div", {
       className: "mdl-card__actions mdl-card--border"
     }, /*#__PURE__*/React.createElement("a", {
@@ -64,7 +83,8 @@ var GAMECARD = function GAMECARD(props) {
       href: props.link
     }, "Profile")))
   );
-};
+}; // - returns a list item that is formatted to best fit a message
+
 
 var DETAILEDLI = function DETAILEDLI(props) {
   return (/*#__PURE__*/React.createElement("li", {
@@ -84,7 +104,8 @@ var DETAILEDLI = function DETAILEDLI(props) {
       className: "material-icons"
     }, "star"))))
   );
-};
+}; // - returns a basic list item containing a name of a user
+
 
 var LISTITEM = function LISTITEM(props) {
   return (/*#__PURE__*/React.createElement("li", {
@@ -95,12 +116,14 @@ var LISTITEM = function LISTITEM(props) {
       className: "material-icons mdl-list__item-icon"
     }, "person"), props.name))
   );
-};
+}; // - unused, originally for prototyping
+
 
 var TITLE = function TITLE(props) {
   return (/*#__PURE__*/React.createElement("h1", null, "Working!")
   );
-};
+}; // - creates a new link for the navigation bar
+
 
 var NAVLINK = function NAVLINK(props) {
   return (/*#__PURE__*/React.createElement("a", {
@@ -108,7 +131,8 @@ var NAVLINK = function NAVLINK(props) {
       href: props.href
     }, props.text)
   );
-};
+}; // - creates an entire navigation bar, unused in final version
+
 
 var NAVBAR = function NAVBAR(props) {
   var test = [0, 1, 2];
@@ -131,14 +155,16 @@ var NAVBAR = function NAVBAR(props) {
       className: "page-content"
     }, props.inside)))
   );
-};
+}; // - creates a material grid
+
 
 var GRID = function GRID(props) {
   return (/*#__PURE__*/React.createElement("div", {
       className: "mdl-grid"
     }, props.inside)
   );
-};
+}; // - creates a material cell
+
 
 var CELL = function CELL(props) {
   if (props.size === undefined) props.size = 1;
@@ -147,7 +173,8 @@ var CELL = function CELL(props) {
       className: cellClass
     }, props.inside)
   );
-};
+}; // - creates a material button
+
 
 var BUTTON = function BUTTON(props) {
   return (/*#__PURE__*/React.createElement("a", {
@@ -157,13 +184,13 @@ var BUTTON = function BUTTON(props) {
     }, props.text))
   );
 };
-"use strict";
-
-console.log('hi from helper');
+"use strict"; // console.log('hi from helper');
+// - redirects to the given path
 
 var redirect = function redirect(path) {
   window.location = path;
-};
+}; // - sends an ajax call based on the action (path), and a data object
+
 
 var sendAjax = function sendAjax(action, data) {
   $.ajax({

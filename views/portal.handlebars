@@ -39,12 +39,18 @@
                     <div class="mdl-cell--12-col">
                         <h1>Welcome, {{username}}</h1>
                     </div>
+                    {{#unless premium}}
+                    <div class="mdl-cell--12-col ad-bar text-center">
+                        <h3>This is an ad</h3>
+                    </div>
+                    {{/unless}}
                     <div class="mdl-grid mdl-cell--12-col outline-red">
                         
                         <div class="mdl-cell--6-col mdl-grid outline-red">
                             <div class="mdl-cell--12-col mdl-grid">
                                 <h4>My Games</h4>
                             </div>
+                            
                             <div class="mdl-cell--12-col mdl-grid">
                                 {{#if games}}
                                     {{#each games}}

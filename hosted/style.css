@@ -37,15 +37,15 @@ form {
     background-color: red;
 }
 
-.outline-red {
-    /*border: 1px solid red;
-    border-radius: 5px;*/
+/*.outline-red {
+    border: 1px solid red;
+    border-radius: 5px;
 }
 
 .outline-black {
     border: 1px solid black;
     border-radius: 5px;
-}
+}*/
 
 .height-100 {
     height: 100px;
@@ -89,4 +89,23 @@ form {
 
 #changePassword {
     max-width: 25vw;
+}
+
+.user-card, .user-card-child {
+    width: 100%;
+}
+
+.white-color {
+    background: white;
+}
+
+.grey-color {
+    background: rgba(128, 128, 128, 0.199);
+}
+
+.ad-bar {
+    background: red;
+    border-radius: 10px;
+    height: 10vh;
+    font-family: cursive;
 }

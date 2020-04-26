@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise;
 
 let GameModel = {};
 
+// - creates a game schema
 const GameSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -27,20 +28,23 @@ const GameSchema = new mongoose.Schema({
   },
 });
 
+// - returns a game object
 GameSchema.statics.toAPI = (doc) => ({
   name: doc.name,
   link: doc.link,
   owner: doc.owner,
 });
 
+// - gets a gae by the owner
 GameSchema.statics.findByOwner = (owner, callback) => {
   const search = {
-    owner: owner,
+    owner,
   };
 
   return GameModel.find(search).select('name link owner').lean().exec(callback);
 };
 
+// gets a game by the game name
 GameSchema.statics.findByGame = (game, callback) => {
   const search = {
     name: game,

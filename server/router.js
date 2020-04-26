@@ -14,6 +14,7 @@ const router = (app) => {
   app.get('/settings', mid.requiresLogin, controllers.Settings.settings);
   // app.post('/maker', mid.requiresLogin, controllers.Domo.make);
   app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Home.homePage);
+  app.get('/people', mid.requiresLogin, controllers.People.people);
 
   app.post('/addFriend', mid.requiresSecure, mid.requiresLogin, controllers.Account.addFriend);
   app.post('/addGame', mid.requiresSecure, mid.requiresLogin, controllers.Game.make);

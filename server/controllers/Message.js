@@ -3,6 +3,7 @@ const models = require('../models');
 const { Message } = models;
 const { Account } = models;
 
+// - creates a new message object
 const makeMsg = (req, res) => {
   if (!req.body.text || !req.body.to) {
     return res.status(400).json({ error: 'No message was sent!' });
@@ -37,7 +38,7 @@ const makeMsg = (req, res) => {
   });
 };
 
-// (result: {}) => {}
+// - returns all the messages that were sent to a specified user
 const getMsgByReceiver = (request, response, callback) => {
   const req = request;
   // const res = response;
@@ -55,6 +56,7 @@ const getMsgByReceiver = (request, response, callback) => {
   });
 };
 
+// - returns all messages created by a certain user
 const getMsgBySender = (request, response, callback) => {
   const req = request;
   // const res = response;

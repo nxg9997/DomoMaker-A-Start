@@ -1,7 +1,8 @@
-$("#buyPremium").on('click', ()=>{
-    fetch('/premium', {method:'GET'}).then((res)=>{
-        res.json().then((data)=>{
-            window.location = data.redirect;
-        });
+// - activates or deactivates premium
+$('#buyPremium').on('click', () => {
+  fetch('/premium', { method:'GET' }).then((res) => {
+    res.json().then((data) => {
+      window.location = data.redirect;
     });
+  });
 });

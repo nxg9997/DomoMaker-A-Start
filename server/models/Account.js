@@ -8,6 +8,7 @@ const iterations = 10000;
 const saltLength = 64;
 const keyLength = 64;
 
+// - creates the account schema
 const AccountSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -38,7 +39,7 @@ const AccountSchema = new mongoose.Schema({
   },
   games: {
     type: Array,
-    default: [/*{ name: 'Rocket League', link: 'rocketleague.tracker/user' }*/],
+    default: [/* { name: 'Rocket League', link: 'rocketleague.tracker/user' } */],
   },
   premium: {
     type: Boolean,
@@ -46,6 +47,7 @@ const AccountSchema = new mongoose.Schema({
   },
 });
 
+// - returns the data from an account object
 AccountSchema.statics.toAPI = (doc) => ({
   // _id is built into your mongo document and is guaranteed to be unique
   username: doc.username,
@@ -56,6 +58,7 @@ AccountSchema.statics.toAPI = (doc) => ({
   premium: doc.premium,
 });
 
+// - validates a password during login
 const validatePassword = (doc, password, callback) => {
   const pass = doc.password;
 
@@ -67,6 +70,7 @@ const validatePassword = (doc, password, callback) => {
   });
 };
 
+// - finds an account based on the username
 AccountSchema.statics.findByUsername = (name, callback) => {
   const search = {
     username: name,
@@ -75,12 +79,17 @@ AccountSchema.statics.findByUsername = (name, callback) => {
   return AccountModel.findOne(search, callback);
 };
 
+// - gets all of the user accounts
+AccountSchema.statics.getAllUsers = (callback) => AccountModel.find({}, callback);
+
+// - generates password encryption
 AccountSchema.statics.generateHash = (password, callback) => {
   const salt = crypto.randomBytes(saltLength);
 
   crypto.pbkdf2(password, salt, iterations, keyLength, 'RSA-SHA512', (err, hash) => callback(salt, hash.toString('hex')));
 };
 
+// - authenticates a user
 AccountSchema.statics.authenticate = (username, password, callback) => {
   AccountModel.findByUsername(username, (err, doc) => {
     if (err) {

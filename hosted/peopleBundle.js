@@ -1,14 +1,33 @@
-"use strict"; // console.log('hi from login.tsx');
-// - sends a login request using the login form
+"use strict"; // - renders the users and attaches click events to the "Add Friend" buttons
 
-$('#loginForm').on('submit', function (e) {
-  e.preventDefault();
-  /*const path = $('#signupForm').attr('action');
-  sendFetch(path !== undefined?path:'/', {method:'POST',body:$("#signupForm").serialize()}
-  ,(res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
+$(document).ready(function () {
+  $('.user-card').each(function (index, el) {
+    ReactDOM.render( /*#__PURE__*/React.createElement(PERSON, {
+      name: $(el).attr('name-prop'),
+      color: $(el).attr('color-prop'),
+      csrfToken: $(el).attr('csrf-prop')
+    }), el);
+  });
+  var addBtns = document.querySelectorAll('.add-friend');
+  addBtns.forEach(function (el) {
+    $(el).on('click', function (e) {
+      e.preventDefault();
+      var path = '/addFriend'; // console.log($(el).attr('accesskey'));
 
-  var path = $('#loginForm').attr('action');
-  sendAjax(path !== undefined ? path : '/', $('#loginForm').serialize());
+      sendAjax(path !== undefined ? path : '/', {
+        username: $(el).attr('placeholder'),
+        _csrf: $(el).attr('accesskey')
+      });
+    });
+  });
+  /*let chatBtns = document.querySelectorAll('.start-chat');
+    chatBtns.forEach((el)=>{
+      $(el).on('click', (e) => {
+          e.preventDefault();
+          const path = '/startchat';
+          //console.log('started chat');
+      });
+  });*/
 });
 "use strict";
 /*declare namespace JSX {

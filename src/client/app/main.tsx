@@ -1,4 +1,4 @@
-console.log('from main');
+// console.log('from main');
 // import * as ReactDOM from 'react-dom';
 
 const populateHome = () => {

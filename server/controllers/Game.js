@@ -1,35 +1,36 @@
 const models = require('../models');
 
 const { Game } = models;
-const { Account } = models;
+// const { Account } = models;
 
+// - adds a game that is connected to the current user
 const makeGame = (req, res) => {
   if (!req.body.name || !req.body.link) {
     return res.status(400).json({ error: 'Error adding game!' });
   }
 
-    const gameData = {
-        owner: req.session.account.username,
-        name: req.body.name,
-        link: req.body.link,
-    };
+  const gameData = {
+    owner: req.session.account.username,
+    name: req.body.name,
+    link: req.body.link,
+  };
 
-    const newGame = new Game.GameModel(gameData);
+  const newGame = new Game.GameModel(gameData);
 
-    const gamePromise = newGame.save();
+  const gamePromise = newGame.save();
 
-    gamePromise.then(() => res.json({ redirect: '/portal' }));
+  gamePromise.then(() => res.json({ redirect: '/portal' }));
 
-    gamePromise.catch((err2) => {
-        console.log(err2);
+  gamePromise.catch((err2) => {
+    console.log(err2);
 
-        return res.status(400).json({ error: 'An error has occurred' });
-    });
+    return res.status(400).json({ error: 'An error has occurred' });
+  });
 
-    return gamePromise;
+  return gamePromise;
 };
 
-// (result: {}) => {}
+// - returns all the games that are owned by a specified user
 const getGameByOwner = (request, response, callback) => {
   const req = request;
   // const res = response;
@@ -47,6 +48,7 @@ const getGameByOwner = (request, response, callback) => {
   });
 };
 
+// - gets all games based on the game title
 const getGameByName = (request, response, callback) => {
   const req = request;
   // const res = response;

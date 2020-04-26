@@ -2,15 +2,18 @@ const models = require('../models');
 
 const { Account } = models;
 
+// - renders the login page
 const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
 
+// - ogs the current user out
 const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
 };
 
+// - logs the user in
 const login = (request, response) => {
   const req = request;
   const res = response;
@@ -33,6 +36,7 @@ const login = (request, response) => {
   });
 };
 
+// - creates a new user
 const signup = (request, response) => {
   const req = request;
   const res = response;
@@ -79,6 +83,7 @@ const signup = (request, response) => {
   });
 };
 
+// - changes the password for the logged in user
 const changePassword = (request, response) => {
   const req = request;
   const res = response;
@@ -101,7 +106,7 @@ const changePassword = (request, response) => {
     };
 
     const update = {
-      $set: { password: hash, salt: salt },
+      $set: { password: hash, salt },
     };
 
     return Account.AccountModel.updateOne(filter, update, (err) => {
@@ -110,11 +115,12 @@ const changePassword = (request, response) => {
         return res.status(400).json({ error: 'An error has occurred' });
       }
 
-      return res.json({redirect:"/portal"});
+      return res.json({ redirect: '/portal' });
     });
   });
 };
 
+// - gets the current csrf token
 const getToken = (request, response) => {
   const req = request;
   const res = response;
@@ -126,6 +132,8 @@ const getToken = (request, response) => {
   res.json(csrfJSON);
 };
 
+// - toggles premium on/off for the current user
+// - (this would require a buy-in if the app was going to be in full production)
 const setPremium = (request, response) => {
   const req = request;
   const res = response;
@@ -161,9 +169,9 @@ const addFriend = (request, response) => {
   const req = request;
   const res = response;
 
-  if(req.session.account.friends.length >= 5 && !req.session.account.premium){
+  if (req.session.account.friends.length >= 5 && !req.session.account.premium) {
     console.log(`${req.session.account.username} is not premium`);
-    return res.status(400).json({error:"Account is not premium, max friends is 5"});
+    return res.status(400).json({ error: 'Account is not premium, max friends is 5' });
   }
 
   const filter = {
@@ -203,7 +211,7 @@ const addGame = (request, response) => {
     _id: req.session.account._id,
   };
 
-  
+
   const update = {
     $push: { games: { name: req.body.name, link: req.body.link } },
   };
@@ -226,6 +234,11 @@ const addGame = (request, response) => {
   });
 };
 
+// - returns an array of all the users that have accounts
+const getAllUsers = (callback) => {
+  Account.AccountModel.getAllUsers(callback);
+};
+
 
 module.exports.loginPage = loginPage;
 module.exports.login = login;
@@ -236,3 +249,4 @@ module.exports.addFriend = addFriend;
 module.exports.addGame = addGame;
 module.exports.changePassword = changePassword;
 module.exports.setPremium = setPremium;
+module.exports.getAllUsers = getAllUsers;

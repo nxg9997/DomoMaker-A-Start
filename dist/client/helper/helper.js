@@ -1,8 +1,10 @@
 "use strict";
-console.log('hi from helper');
+// console.log('hi from helper');
+// - redirects to the given path
 const redirect = (path) => {
     window.location = path;
 };
+// - sends an ajax call based on the action (path), and a data object
 const sendAjax = (action, data) => {
     $.ajax({
         data,

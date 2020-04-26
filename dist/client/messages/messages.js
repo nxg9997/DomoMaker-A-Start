@@ -1,5 +1,6 @@
 "use strict";
-console.log('hi from msgs.tsx');
+// console.log('hi from msgs.tsx');
+// - sends a new message based on the message form
 $('#msgForm').on('submit', (e) => {
     e.preventDefault();
     /*const path = $('#signupForm').attr('action');
