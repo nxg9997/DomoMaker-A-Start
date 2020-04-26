@@ -63,9 +63,9 @@
                     <div class="mdl-cell--12-col" >
                         <h4>Change Password</h4>
                         <form id="changePassword" action="/changePassword" method="POST" >
-                            <input type="text" name="pass" placeholder="Password" />
-                            <input type="text" name="pass2" placeholder="Retype Password" />
-                            <input type="text" name="newPass" placeholder="New Password" />
+                            <input type="password" name="pass" placeholder="Password" />
+                            <input type="password" name="pass2" placeholder="Retype Password" />
+                            <input type="password" name="newPass" placeholder="New Password" />
                             <input type="hidden" name="_csrf" value={{csrfToken}} class="small-margin" />
                             <input type="submit" value="Change Password" />
                         </form>

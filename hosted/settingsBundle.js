@@ -9,6 +9,15 @@ $('#buyPremium').on('click', function () {
     });
   });
 });
+$('#changePassword').on('submit', function (e) {
+  e.preventDefault();
+  /*const path = $('#signupForm').attr('action');
+  sendFetch(path !== undefined?path:'/', {method:'POST',body:$("#signupForm").serialize()}
+  ,(res:any)=>{ redirect(res.redirect);},(res:any)=>{});*/
+
+  var path = $('#changePassword').attr('action');
+  sendAjax(path !== undefined ? path : '/', $('#changePassword').serialize());
+});
 "use strict";
 /*declare namespace JSX {
     interface IntrinsicElements {
